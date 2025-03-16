@@ -5,6 +5,7 @@ import pytest
 from playwright.sync_api import Playwright, sync_playwright
 
 from helper.browser_manager import BrowserManager
+from helper.utils import read_config
 
 
 @pytest.fixture()
@@ -19,8 +20,7 @@ def playwright_browser_context(playwright_browser):
 
     context = playwright_browser.new_context(ignore_https_errors=True)
     page = context.new_page()
-    page.goto("https://www.saucedemo.com/")
-    #page.goto(read_config('URL', 'base_url'))  # Replace with your base URL
+    page.goto(read_config('DEV', 'base_url'))
 
     yield page  # Provide the page to the test
 
