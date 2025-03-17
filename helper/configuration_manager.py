@@ -41,7 +41,7 @@ class ConfigurationManager1:
 
     @staticmethod
     def headless() -> bool:
-        return read_config('BROWSER', 'headless') == 'True'
+        return read_config(read_config('ENV', 'env'), 'headless') == 'True'
 
     @staticmethod
     def browser_channel() -> str:

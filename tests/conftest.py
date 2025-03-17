@@ -20,7 +20,7 @@ def playwright_browser_context(playwright_browser):
 
     context = playwright_browser.new_context(ignore_https_errors=True)
     page = context.new_page()
-    page.goto(read_config('DEV', 'base_url'))
+    page.goto(read_config(read_config('ENV', 'env'), 'base_url'))
 
     yield page  # Provide the page to the test
 
